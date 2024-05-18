@@ -81,6 +81,64 @@ def exercise_7():
     pause()
 
 def exercise_8():
+
+    datos_solicitudes = [
+        (1234, 1958),
+        (5678, 1955),
+        (9012, 1959),
+        (3456, 1949),
+        (7890, 1952),
+        (2345, 1957),
+        (6789, 1953),
+        (1023, 1948),
+        (4567, 1956),
+        (8901, 1951),
+        (1123, 1947),
+        (5678, 1955),
+        (9012, 1959),
+        (3456, 1949),
+        (7890, 1952),
+        (2345, 1957),
+        (6789, 1953),
+        (1023, 1948),
+        (4567, 1956),
+        (8901, 1951),
+        (1123, 1947),
+        (1234, 1958),
+        (5678, 1955),
+        (9012, 1959),
+        (3456, 1949),
+        (7890, 1952),
+        (2345, 1957),
+        (6789, 1953),
+        (1023, 1948),
+        (4567, 1956),
+        (8901, 1951),
+    ]
+
+    # Filtrar solicitudes antes de 1960
+    solicitudes_filtradas = list(filter(lambda solicitud: solicitud[1] < 1960, datos_solicitudes))
+
+    # Definir funciones para mapeo y reducción
+    def mapear_año(solicitud):
+        return solicitud[1]
+
+    def reducir_conteos(conteos_por_año, año_actual):
+        if año_actual in conteos_por_año:
+            conteos_por_año[año_actual] += 1
+        else:
+            conteos_por_año[año_actual] = 1
+        return conteos_por_año
+
+    # Aplicar funciones de map y reduce
+    conteos_por_año = reduce(reducir_conteos, map(mapear_año, solicitudes_filtradas), {})
+
+    # Imprimir el número de solicitudes por año
+    print("Número de solicitudes por año:")
+    for año, conteo in conteos_por_año.items():
+        print(f"Año {año}: {conteo} solicitudes")
+
+
     pause()
 
 def exercise_9():
