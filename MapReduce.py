@@ -1,9 +1,12 @@
 import random
 import re
+import os
 from functools import reduce
 
+
 def pause():
-    input("Press Enter to return to the menu...")
+    input("Presione enter para volver al menu...")
+    os.system('cls' if os.name=='nt' else 'clear')
 
 def exercise_1():
     def calcular_cuadrado(numero):
@@ -15,7 +18,7 @@ def exercise_1():
     print("Números aleatorios:", numeros_aleatorios)
     print("Cuadrados de los números aleatorios:", resultado)
     
-    pause()  # Pause at the end of exercise 1
+    pause()
 
 def exercise_2():
     def word_length(word):
@@ -25,10 +28,8 @@ def exercise_2():
     words= re.sub(r'[ .,]+',' ',text.readline()).split(' ')
     words_length= list(map(word_length,words[0:30]))
     print(words_length)
-    pause()  # Pause at the end of exercise 2
+    pause()
 
-# Define more exercises in the same way
-# Example:
 def exercise_3():
     def capitalized_word(word):
         return word.capitalize()
@@ -37,7 +38,7 @@ def exercise_3():
     words= re.sub(r'[ .,]+',' ',text.readline().lower()).split(' ')
     capitalized_words=list(map(capitalized_word,words))
     print(capitalized_words)
-    pause()  # Pause at the end of exercise 3
+    pause()
 
 def exercise_4():
     numeros=[1,2,3,4,5,6,7,8,9,10]
@@ -62,6 +63,21 @@ def exercise_6():
     pause()
 
 def exercise_7():
+    
+    def reduce_word_count(word_count, word):
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+        return word_count
+
+    with open('perro_andaluz.txt', 'r', encoding='utf-8') as lyrics:
+        words = []
+        for line in lyrics:
+            words.extend(line.strip().split())
+
+    word_count = reduce(reduce_word_count, words, {})
+    print(word_count)
     pause()
 
 def exercise_8():
@@ -85,18 +101,18 @@ def main():
         8: exercise_8,
         9: exercise_9,
         10: exercise_10
-        # Add more exercises as needed
     }
 
     while True:
-        print("Choose an exercise to execute:")
+        print("Seleccione un ejercicio:")
         for number, func in exercises.items():
             print(f"{number}. {func.__name__.replace('_', ' ')}")
 
-        choice = input("Enter the exercise number (0 to exit): ")
+        choice = input("Ingrese el número de ejercicio (0 para salir): ")
+        os.system('cls' if os.name=='nt' else 'clear')
 
         if choice == '0':
-            print("Exiting...")
+            print("Saliendo...")
             break
 
         if choice.isdigit():
@@ -104,9 +120,9 @@ def main():
             if exercise_number in exercises:
                 exercises[exercise_number]()
             else:
-                print("Invalid exercise number. Please try again.")
+                print("Número de ejercicio inválido")
         else:
-            print("Invalid input. Please enter a number.")
+            print("ERROR! Intente de nuevo e ingrese un número")
 
 if __name__ == "__main__":
     main()
