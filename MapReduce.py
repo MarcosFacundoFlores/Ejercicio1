@@ -145,6 +145,66 @@ def exercise_9():
     pause()
 
 def exercise_10():
+    # Datos de ejemplo para cada comisaría (N° de denuncia, tipo de delito)
+    datos_comisaria1 = [
+    (123, "Robo"),
+    (456, "Hurto"),
+    (789, "Riña"),
+    (1011, "Violencia de género"),
+    (1314, "Robo"),
+    (1617, "Hurto"),
+    (1920, "Riña"),
+    (2223, "Violencia de género"),
+    (2526, "Robo"),
+    (2829, "Hurto"),
+    ]
+
+    datos_comisaria2 = [
+    (3132, "Hurto"),
+    (3435, "Robo"),
+    (3738, "Riña"),
+    (4041, "Violencia de género"),
+    (4344, "Robo"),
+    (4647, "Hurto"),
+    (4950, "Riña"),
+    (5253, "Violencia de género"),
+    (5556, "Robo"),
+    (5859, "Hurto"),
+]
+
+    datos_comisaria3 = [
+    (6162, "Robo"),
+    (6465, "Hurto"),
+    (6768, "Riña"),
+    (7071, "Violencia de género"),
+    (7374, "Robo"),
+    (7677, "Hurto"),
+    (7980, "Riña"),
+    (8283, "Violencia de género"),
+    (8586, "Robo"),
+    (8889, "Hurto"),
+]
+    
+    todas_las_denuncias = datos_comisaria1 + datos_comisaria2 + datos_comisaria3
+    
+    # Definir funciones para mapeo y reducción
+    def mapear_tipo_delito(denuncia):
+        return denuncia[1]  # Extraer el tipo de delito de la tupla de denuncia
+
+    def reducir_conteos(conteos_delitos, tipo_delito):
+        if tipo_delito in conteos_delitos:
+            conteos_delitos[tipo_delito] += 1
+        else:
+            conteos_delitos[tipo_delito] = 1
+        return conteos_delitos
+
+    conteos_delitos = reduce(reducir_conteos, map(mapear_tipo_delito, todas_las_denuncias), {})
+
+    # Imprimir los conteos finales de delitos
+    print("Delitos más reportados:")
+    for tipo_delito, conteo in conteos_delitos.items():
+        print(f"{tipo_delito}: {conteo}")
+    
     pause()
 
 def main():
