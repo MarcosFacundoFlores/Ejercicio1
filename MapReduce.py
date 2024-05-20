@@ -147,10 +147,21 @@ def exercise_9():
         ciudad, temperatura = line.strip().split(',')
         return ciudad, temperatura
     
+    def maxTempsReducer(maxTemps, cityTemp):
+        
+        newCity, newTemp = cityTemp
+        
+        if newCity not in maxTemps or newTemp > maxTemps[newCity]:
+            maxTemps[newCity] = newTemp
+        return maxTemps
+    
     
     with open('temperaturas.txt', 'r') as tempsRaw: 
-        tempsArray= map(mapTemps, tempsRaw)
-        print(tempsArray)
+        tempsArray= list(map(mapTemps, tempsRaw))
+        
+        maxTemps={}
+        reduce(maxTempsReducer, tempsArray, maxTemps)
+        print(maxTemps)
             
 
     pause()
