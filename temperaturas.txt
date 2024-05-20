@@ -1,0 +1,40 @@
+Nueva York,23
+París,31
+Buenos Aires,18
+Delhi,29
+Oslo,35
+Tokio,27
+Moscú,17
+Beijing,22
+Londres,39
+Sydney,25
+Nueva York,37
+París,34
+Buenos Aires,19
+Delhi,28
+Oslo,26
+Tokio,30
+Moscú,20
+Beijing,33
+Londres,36
+Sydney,21
+Nueva York,24
+París,16
+Buenos Aires,32
+Delhi,38
+Oslo,15
+Tokio,40
+Moscú,28
+Beijing,39
+Londres,33
+Sydney,22
+Nueva York,26
+París,35
+Buenos Aires,31
+Delhi,20
+Oslo,27
+Tokio,34
+Moscú,18
+Beijing,23
+Londres,29
+Sydney,17

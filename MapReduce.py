@@ -142,6 +142,17 @@ def exercise_8():
     pause()
 
 def exercise_9():
+    
+    def mapTemps(line):
+        ciudad, temperatura = line.strip().split(',')
+        return ciudad, temperatura
+    
+    
+    with open('temperaturas.txt', 'r') as tempsRaw: 
+        tempsArray= map(mapTemps, tempsRaw)
+        print(tempsArray)
+            
+
     pause()
 
 def exercise_10():
